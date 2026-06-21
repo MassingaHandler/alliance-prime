@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alliance Prime Consulting Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #5D9B42;
+      --navy:   #00344E;
+      --gray:   #666766;
+      --light:  #f4f7f4;
+      --white:  #ffffff;
+      --border: #e2e8e2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ── NAVBAR ───────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0, 52, 78, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(93,155,66,0.3);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img { height: 48px; object-fit: contain; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-cta {
+      background: var(--green);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: #4d8836; color: var(--white) !important; }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(0,52,78,0.93) 0%, rgba(0,52,78,0.75) 60%, rgba(93,155,66,0.5) 100%),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--white); }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(93,155,66,0.2);
+      border: 1px solid rgba(93,155,66,0.5);
+      color: #8fd465;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span { color: var(--green); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: #4d8836; transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--green); background: rgba(93,155,66,0.1); }
+
+    .hero-logo-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo-box img {
+      max-width: 420px;
+      width: 100%;
+      filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
+    }
+
+    /* ── STATS BAR ────────────────────────────── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 2rem;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat-item { color: var(--white); }
+    .stat-num  { font-size: 2rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .stat-lbl  { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
+
+    /* ── SECTION UTIL ─────────────────────────── */
+    section { padding: 6rem 2rem; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--green);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ────────────────────────────────── */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,52,78,0.15);
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 480px;
+    }
+
+    .about-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 180px;
+      height: 180px;
+      background: var(--green);
+      border-radius: 8px;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    .about-badge-float {
+      position: absolute;
+      top: 2rem;
+      left: -2rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,52,78,0.3);
+      text-align: center;
+    }
+
+    .about-badge-float strong { display: block; font-size: 1.8rem; color: var(--green); font-weight: 800; }
+    .about-badge-float span  { font-size: 0.75rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .about-text p {
+      color: #444;
+      margin-bottom: 1.25rem;
+      font-size: 0.97rem;
+    }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: rgba(93,155,66,0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--green);
+    }
+
+    .pillar-icon svg,
+    .contact-icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: rgba(93,155,66,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      color: var(--green);
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .pillar-label { font-size: 0.875rem; font-weight: 600; color: var(--navy); padding-top: 0.4rem; }
+
+    /* ── SERVICES ─────────────────────────────── */
+    .services { background: var(--light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--green);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.25s;
+    }
+
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,52,78,0.1); border-color: var(--green); }
+    .service-card:hover::before { transform: scaleY(1); }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: rgba(93,155,66,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.65rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ── WHY US ───────────────────────────────── */
+    .why {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .why .section-title { color: var(--white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      background: rgba(255,255,255,0.04);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .why-card:hover { background: rgba(93,155,66,0.1); border-color: rgba(93,155,66,0.4); }
+
+    .why-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--green);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--white); }
+    .why-card p  { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* ── CONTACT ──────────────────────────────── */
+    .contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-info > p { color: var(--gray); margin-bottom: 2rem; font-size: 0.97rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: rgba(93,155,66,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .contact-item h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.2rem; }
+    .contact-item p  { font-size: 0.95rem; color: var(--navy); font-weight: 600; }
+
+    .contact-form {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(93,155,66,0.15);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem;
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover { background: var(--green); transform: translateY(-1px); }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      background: #001f2e;
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand img { height: 48px; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.6rem; }
+    .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--green); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom span { color: var(--green); }
+
+    /* ── DIVIDER ──────────────────────────────── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--navy));
+      border-radius: 2px;
+      margin: 1rem 0 2.5rem;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner      { grid-template-columns: 1fr; text-align: center; }
+      .hero-actions    { justify-content: center; }
+      .hero-logo-box   { display: none; }
+      .about-grid      { grid-template-columns: 1fr; }
+      .about-badge-float { display: none; }
+      .services-grid   { grid-template-columns: 1fr 1fr; }
+      .why-grid        { grid-template-columns: 1fr; }
+      .contact-grid    { grid-template-columns: 1fr; }
+      .footer-top      { grid-template-columns: 1fr; gap: 2rem; }
+      .stats-inner     { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .nav-links       { display: none; }
+      .about-pillars   { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid  { grid-template-columns: 1fr; }
+      .form-row       { grid-template-columns: 1fr; }
+    }
+
+    /* ── WHATSAPP FLOAT ───────────────────────── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .whatsapp-tooltip {
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .whatsapp-btn {
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-float:hover .whatsapp-btn {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+    }
+
+    .whatsapp-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="Logo/logo-branco.png" alt="Alliance Prime Consulting Group" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre Nós</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#porque">Porquê Nós</a></li>
+      <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Where Finance meets Technology</div>
+      <h1>
+        Soluções que <span>Transformam</span><br />
+        o seu Negócio
+      </h1>
+      <p>
+        A Alliance Prime Consulting Group combina conhecimento técnico, visão estratégica
+        e compromisso com resultados para transformar desafios em oportunidades de crescimento.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">Solicitar Consulta</a>
+        <a href="#servicos" class="btn-outline">Ver Serviços</a>
+      </div>
+    </div>
+    <div class="hero-logo-box">
+      <img src="Logo/logo-branco.png" alt="Alliance Prime" />
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-lbl">Serviços Especializados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-lbl">Áreas de Actuação</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Foco no Cliente</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-lbl">Suporte Contínuo</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SOBRE NÓS ── -->
+<section class="about" id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <div class="about-visual">
+        <div class="about-img-wrap">
+          <img src="Logo/logo-background.png" alt="Alliance Prime" style="object-fit: contain; background: #f4f7f4;" />
+        </div>
+        <div class="about-accent"></div>
+        <div class="about-badge-float">
+          <strong>AP</strong>
+          <span>Consulting Group</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="section-tag">Sobre Nós</div>
+        <h2 class="section-title">Tecnologia e Gestão<br />a Trabalhar por Si</h2>
+        <div class="divider"></div>
+        <p>
+          A Alliance Prime Consulting Group é uma empresa especializada em soluções tecnológicas
+          e consultoria empresarial, criada para apoiar organizações na optimização dos seus
+          processos, fortalecimento da sua segurança digital e melhoria do seu desempenho
+          financeiro e operacional.
+        </p>
+        <p>
+          Num ambiente empresarial cada vez mais exigente e competitivo, combinamos
+          conhecimento técnico, visão estratégica e compromisso com resultados para ajudar
+          os nossos clientes a transformar desafios em oportunidades de crescimento.
+        </p>
+        <p>
+          Desenvolvemos relações de parceria com os nossos clientes, compreendendo
+          profundamente as suas necessidades e entregando soluções alinhadas com os
+          seus objectivos de negócio.
+        </p>
+
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="pillar-label">Cibersegurança</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+              </svg>
+            </div>
+            <div class="pillar-label">Automatização</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="pillar-label">Consultoria Financeira</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <div class="pillar-label">Desenvolvimento Digital</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVIÇOS ── -->
+<section class="services" id="servicos">
+  <div class="section-inner">
+    <div class="section-tag">Os Nossos Serviços</div>
+    <h2 class="section-title">Soluções Integradas<br />para o seu Crescimento</h2>
+    <p class="section-subtitle">
+      Oferecemos um portefólio abrangente de serviços tecnológicos e de gestão,
+      personalizados às necessidades da sua organização.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>Concepção e Desenvolvimento de Websites</h3>
+        <p>
+          Desenvolvemos integralmente o seu website — design, programação, alojamento e
+          manutenção contínua. Inclui domínio corporativo, e-mail com 10 GB e gestão da
+          imagem corporativa.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+        </div>
+        <h3>Desenvolvimento de Aplicações para Telemóveis</h3>
+        <p>
+          Concebemos e desenvolvemos aplicações móveis para Android e iOS, disponibilizadas
+          na AppleStore e PlayStore, com foco em UI/UX e integração com sistemas empresariais.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3>Automação de Processos (RPA)</h3>
+        <p>
+          Implementamos soluções de automação com UiPath — análise de processos, desenvolvimento
+          de robôs RPA, integração com sistemas existentes e monitorização contínua.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <h3>Cybersecurity as a Service (CaaS)</h3>
+        <p>
+          Reforçamos a postura de segurança da sua empresa com especialistas em segurança da
+          informação, Governance Risk &amp; Compliance, Plano de Continuidade de Negócio e
+          Privacidade.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </div>
+        <h3>Testes de Penetração</h3>
+        <p>
+          Realizamos testes à infra-estrutura externa e interna, websites e dispositivos móveis,
+          identificando vulnerabilidades e emitindo relatórios com planos de remediação efectivos.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M7 8h2v5H7zM11 6h2v7h-2zM15 10h2v3h-2z"/>
+          </svg>
+        </div>
+        <h3>Implementação ERP Primavera</h3>
+        <p>
+          Instalação, configuração e parametrização do sistema ERP Primavera, assegurando
+          integração dos processos contabilísticos, financeiros e operacionais da sua organização.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Plano Estratégico de Negócio</h3>
+        <p>
+          Elaboração de planos estratégicos orientados para o crescimento sustentável e
+          competitividade, com visão clara e objectivos mensuráveis para a sua empresa.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>Optimização &amp; Padronização de Processos</h3>
+        <p>
+          Monitorização contínua dos processos internos, implementação de boas práticas e
+          definição de metodologias para aumentar produtividade e assegurar excelência
+          operacional.
+        </p>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PORQUÊ NÓS ── -->
+<section class="why" id="porque">
+  <div class="section-inner">
+    <div class="section-tag" style="color:#8fd465;">Porquê a Alliance Prime</div>
+    <h2 class="section-title">O que nos Distingue</h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.65); margin-bottom:3rem;">
+      Inovação que impulsiona resultados — o nosso compromisso com a excelência
+      reflecte-se em cada projecto que entregamos.
+    </p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Abordagem Integrada</h3>
+        <p>Combinamos tecnologia e gestão de forma sinérgica, oferecendo soluções que abrangem toda a cadeia de valor da sua organização.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Soluções Personalizadas</h3>
+        <p>Cada cliente tem necessidades únicas. Desenvolvemos soluções à medida, alinhadas com os objectivos e realidade do seu negócio.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>Equipa Especializada</h3>
+        <p>Profissionais com vasta experiência em tecnologia, cibersegurança, finanças e gestão empresarial ao seu serviço.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3>Resultados Mensuráveis</h3>
+        <p>Focamo-nos em entregar resultados tangíveis — eficiência operacional, redução de custos e crescimento sustentável.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <h3>Parceria de Longo Prazo</h3>
+        <p>Construímos relações duradouras com os nossos clientes, acompanhando a sua evolução e adaptando soluções às novas necessidades.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">06</div>
+        <h3>Suporte Contínuo</h3>
+        <p>Disponibilizamos suporte técnico e estratégico contínuo, assegurando que os sistemas e processos funcionam de forma óptima.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section class="contact" id="contacto">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <div class="section-tag">Contacte-nos</div>
+        <h2>Vamos Trabalhar<br />Juntos</h2>
+        <div class="divider"></div>
+        <p>
+          Estamos prontos para apoiar a sua organização. Entre em contacto connosco
+          e descubra como a Alliance Prime pode transformar o seu negócio.
+        </p>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 .99 3.33 2 2 0 0 1 2.98 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.98 5.98l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Telefone</h4>
+            <p>845 009 342 · 846 747 520</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <h4>E-mail</h4>
+            <p>info@allianceprimecg.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Website</h4>
+            <p>www.allianceprimecg.com</p>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <img src="Logo/logo-principal.png" alt="Alliance Prime" style="max-height:72px; object-fit:contain;" />
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Solicitar uma Consulta</h3>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" placeholder="O seu nome" />
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nome da empresa" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="email@empresa.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="tel" placeholder="+244 000 000 000" />
+        </div>
+
+        <div class="form-group">
+          <label>Serviço de Interesse</label>
+          <select>
+            <option value="">Seleccione um serviço</option>
+            <option>Desenvolvimento de Website</option>
+            <option>Aplicações Móveis</option>
+            <option>Automação de Processos (RPA)</option>
+            <option>Cybersecurity as a Service</option>
+            <option>Testes de Penetração</option>
+            <option>ERP Primavera</option>
+            <option>Consultoria Financeira</option>
+            <option>Plano Estratégico de Negócio</option>
+            <option>Optimização de Processos</option>
+            <option>Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea placeholder="Descreva brevemente a sua necessidade..."></textarea>
+        </div>
+
+        <button class="form-submit">Enviar Mensagem</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="Logo/logo Branco .png" alt="Alliance Prime Consulting Group" />
+        <p>
+          Soluções tecnológicas e consultoria empresarial para organizações que ambicionam
+          crescimento sustentável e excelência operacional.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Desenvolvimento Web</a></li>
+          <li><a href="#servicos">Aplicações Móveis</a></li>
+          <li><a href="#servicos">Automação RPA</a></li>
+          <li><a href="#servicos">Cibersegurança</a></li>
+          <li><a href="#servicos">ERP Primavera</a></li>
+          <li><a href="#servicos">Consultoria Financeira</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#porque">Porquê a Alliance Prime</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <h4 style="margin-top:1.5rem;">Contactos</h4>
+        <ul>
+          <li><a href="tel:+244845009342">845 009 342</a></li>
+          <li><a href="tel:+244846747520">846 747 520</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 <span>Alliance Prime Consulting Group</span>. Todos os direitos reservados.</p>
+      <p>Where Finance meets Technology</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a class="whatsapp-float" href="https://wa.me/244845009342?text=Olá%2C%20gostaria%20de%20mais%20informações%20sobre%20os%20vossos%20serviços." target="_blank" rel="noopener" aria-label="Contactar via WhatsApp">
+  <span class="whatsapp-tooltip">Fale Connosco</span>
+  <div class="whatsapp-btn">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.82.736 5.461 2.024 7.752L0 32l8.469-2.001A15.94 15.94 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.768-1.845l-.485-.289-5.026 1.187 1.214-4.9-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.356-1.162-2.721-1.295-.365-.133-.631-.199-.897.2-.265.398-1.029 1.295-1.261 1.561-.232.265-.465.299-.863.1-.398-.2-1.681-.62-3.203-1.977-1.184-1.056-1.983-2.36-2.215-2.758-.232-.398-.025-.613.174-.811.178-.178.398-.465.597-.698.2-.232.266-.398.399-.664.133-.265.066-.498-.033-.697-.1-.2-.897-2.162-1.229-2.96-.324-.777-.652-.672-.897-.684l-.764-.013c-.265 0-.697.1-1.062.498-.365.398-1.394 1.362-1.394 3.323s1.428 3.853 1.627 4.118c.2.265 2.81 4.29 6.808 6.018.951.41 1.693.656 2.272.839.955.303 1.824.26 2.511.157.766-.114 2.356-.963 2.688-1.894.332-.93.332-1.727.232-1.894-.099-.166-.365-.265-.763-.464z"/>
+    </svg>
+  </div>
+</a>
+
+</body>
+</html>

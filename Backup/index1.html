@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alliance Prime Consulting Group — Where Finance meets Technology</title>
+
+  <!-- EB Garamond (headings) + Lato (body) — formal, authoritative per UI/UX Pro Max -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            green:       '#5D9B42',
+            'green-dk':  '#4d8836',
+            navy:        '#00344E',
+            'navy-dk':   '#001f2e',
+            muted:       '#666766',
+          },
+          fontFamily: {
+            heading: ['"EB Garamond"', 'Georgia', 'serif'],
+            body:    ['Lato', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* prefers-reduced-motion — skill checklist item */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Skip link — skill requirement: keyboard accessibility */
+    .skip-link {
+      position: absolute;
+      top: -48px;
+      left: 1rem;
+      background: #5D9B42;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      z-index: 9999;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0.5rem; }
+
+    /* Global focus-visible — skill: visible focus rings */
+    *:focus-visible {
+      outline: 2px solid #5D9B42;
+      outline-offset: 3px;
+    }
+
+    body { font-family: 'Lato', system-ui, sans-serif; }
+    h1, h2, h3, h4 { font-family: 'EB Garamond', Georgia, serif; }
+
+    /* Swiss Modernism: transitions 200-250ms ease-out */
+    .t { transition: all 220ms ease-out; }
+
+    /* Swiss rule line */
+    .rule { display: block; width: 2rem; height: 1px; background: #5D9B42; }
+
+    /* Service card hover flip */
+    .svc:hover .svc-icon { color: #5D9B42; }
+    .svc:hover h3        { color: #fff; }
+    .svc:hover p         { color: rgba(255,255,255,0.65); }
+
+    /* Select arrow */
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666766' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Skip navigation — WCAG keyboard users -->
+  <a href="#main" class="skip-link">Saltar para o conteúdo principal</a>
+
+  <!-- ── NAVBAR ──────────────────────────────────────────── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-navy border-b border-white/10"
+       role="navigation" aria-label="Navegação principal">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <a href="#inicio" aria-label="Alliance Prime — página inicial">
+          <img src="Logo/logo Branco .png" alt="Alliance Prime Consulting Group" class="h-10 object-contain" />
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="hidden md:flex items-center gap-8" role="list">
+          <li><a href="#sobre"    class="text-white/70 hover:text-white t text-xs font-bold tracking-widest uppercase cursor-pointer">Sobre Nós</a></li>
+          <li><a href="#servicos" class="text-white/70 hover:text-white t text-xs font-bold tracking-widest uppercase cursor-pointer">Serviços</a></li>
+          <li><a href="#porque"   class="text-white/70 hover:text-white t text-xs font-bold tracking-widest uppercase cursor-pointer">Porquê Nós</a></li>
+          <li>
+            <a href="#contacto"
+               class="bg-green hover:bg-green-dk text-white t text-xs font-bold tracking-widest uppercase px-5 py-2.5 cursor-pointer">
+              Contactar
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile hamburger -->
+        <button id="menu-btn" class="md:hidden text-white p-2 cursor-pointer"
+                aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="6"  x2="19" y2="6"/>
+            <line x1="3" y1="11" x2="19" y2="11"/>
+            <line x1="3" y1="16" x2="19" y2="16"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden pb-4" role="menu">
+        <ul class="flex flex-col gap-1" role="list">
+          <li><a href="#sobre"    class="block text-white/80 hover:text-green t text-xs font-bold tracking-widest uppercase py-2 cursor-pointer" role="menuitem">Sobre Nós</a></li>
+          <li><a href="#servicos" class="block text-white/80 hover:text-green t text-xs font-bold tracking-widest uppercase py-2 cursor-pointer" role="menuitem">Serviços</a></li>
+          <li><a href="#porque"   class="block text-white/80 hover:text-green t text-xs font-bold tracking-widest uppercase py-2 cursor-pointer" role="menuitem">Porquê Nós</a></li>
+          <li><a href="#contacto" class="block text-green text-xs font-bold tracking-widest uppercase py-2 cursor-pointer" role="menuitem">Contactar</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ── HERO ────────────────────────────────────────────── -->
+    <section id="inicio"
+             class="min-h-screen bg-navy flex items-center pt-16"
+             aria-labelledby="hero-h1">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+          <!-- Text col: 7 -->
+          <div class="lg:col-span-7">
+            <p class="flex items-center gap-3 text-green text-xs font-bold tracking-[0.18em] uppercase mb-8">
+              <span class="rule" aria-hidden="true"></span>
+              Where Finance meets Technology
+            </p>
+
+            <h1 id="hero-h1"
+                class="font-heading text-white font-semibold leading-[1.1] mb-8"
+                style="font-size: clamp(2.6rem, 5vw, 4.2rem);">
+              Soluções que<br />
+              <em class="not-italic text-green">Transformam</em><br />
+              o seu Negócio
+            </h1>
+
+            <p class="text-white/65 text-lg font-light leading-relaxed max-w-xl mb-10">
+              Combinamos conhecimento técnico, visão estratégica e compromisso com
+              resultados para transformar desafios em oportunidades de crescimento.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a href="#contacto"
+                 class="bg-green hover:bg-green-dk text-white t text-xs font-bold tracking-[0.1em] uppercase px-8 py-4 cursor-pointer"
+                 aria-label="Ir para o formulário de consulta">
+                Solicitar Consulta
+              </a>
+              <a href="#servicos"
+                 class="border border-white/30 hover:border-green text-white hover:text-green t text-xs font-bold tracking-[0.1em] uppercase px-8 py-4 cursor-pointer">
+                Ver Serviços
+              </a>
+            </div>
+          </div>
+
+          <!-- Logo visual col: 5 -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end" aria-hidden="true">
+            <div class="relative flex items-center justify-center">
+              <!-- Subtle glow -->
+              <div class="absolute w-72 h-72 bg-green/10 rounded-full blur-3xl"></div>
+              <img src="Logo/logo Branco .png"
+                   alt=""
+                   class="relative w-full max-w-sm object-contain drop-shadow-2xl" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STATS ────────────────────────────────────────────── -->
+    <div class="bg-green" role="complementary" aria-label="Indicadores">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <dl class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/25">
+          <div class="py-8 px-6 text-center">
+            <dd class="font-heading text-white font-semibold text-4xl leading-none">10<span class="text-white/70">+</span></dd>
+            <dt class="text-white/70 text-xs font-bold tracking-[0.1em] uppercase mt-2">Serviços</dt>
+          </div>
+          <div class="py-8 px-6 text-center">
+            <dd class="font-heading text-white font-semibold text-4xl leading-none">5</dd>
+            <dt class="text-white/70 text-xs font-bold tracking-[0.1em] uppercase mt-2">Áreas de Actuação</dt>
+          </div>
+          <div class="py-8 px-6 text-center">
+            <dd class="font-heading text-white font-semibold text-4xl leading-none">100<span class="text-white/70">%</span></dd>
+            <dt class="text-white/70 text-xs font-bold tracking-[0.1em] uppercase mt-2">Foco no Cliente</dt>
+          </div>
+          <div class="py-8 px-6 text-center">
+            <dd class="font-heading text-white font-semibold text-4xl leading-none">24<span class="text-white/70">/7</span></dd>
+            <dt class="text-white/70 text-xs font-bold tracking-[0.1em] uppercase mt-2">Suporte</dt>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- ── SOBRE NÓS ─────────────────────────────────────────── -->
+    <section id="sobre" class="py-24 bg-white" aria-labelledby="sobre-h2">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+          <!-- Visual: 5 cols -->
+          <div class="lg:col-span-5">
+            <div class="relative">
+              <!-- Swiss offset border -->
+              <div class="absolute -top-3 -left-3 w-full h-full border border-green/25 pointer-events-none" aria-hidden="true"></div>
+              <div class="bg-slate-50 flex items-center justify-center p-16" style="min-height:400px;">
+                <img src="Logo/logo background.png"
+                     alt="Alliance Prime Consulting Group — logótipo com fundo"
+                     class="w-full object-contain max-h-64" />
+              </div>
+              <!-- Floating badge -->
+              <div class="absolute -bottom-6 -right-6 bg-navy px-6 py-5 shadow-2xl" role="img" aria-label="Alliance Prime logo">
+                <img src="Logo/logo Branco .png" alt="" aria-hidden="true" class="h-10 object-contain" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text: 6 cols starting at 7 -->
+          <div class="lg:col-span-6 lg:col-start-7">
+            <p class="flex items-center gap-3 text-green text-xs font-bold tracking-[0.18em] uppercase mb-4">
+              <span class="rule" aria-hidden="true"></span>
+              Sobre Nós
+            </p>
+            <h2 id="sobre-h2" class="font-heading text-navy font-semibold leading-tight mb-6"
+                style="font-size: clamp(2rem, 3.5vw, 3rem);">
+              Tecnologia e Gestão<br />a Trabalhar por Si
+            </h2>
+            <div class="w-10 h-0.5 bg-green mb-8" aria-hidden="true"></div>
+
+            <div class="space-y-5 text-muted leading-[1.75] text-base">
+              <p>
+                A Alliance Prime Consulting Group é uma empresa especializada em soluções tecnológicas
+                e consultoria empresarial, criada para apoiar organizações na optimização dos seus
+                processos, fortalecimento da sua segurança digital e melhoria do seu desempenho
+                financeiro e operacional.
+              </p>
+              <p>
+                Num ambiente empresarial cada vez mais exigente e competitivo, combinamos conhecimento
+                técnico, visão estratégica e compromisso com resultados para ajudar os nossos clientes
+                a transformar desafios em oportunidades de crescimento.
+              </p>
+              <p>
+                Desenvolvemos relações de parceria com os nossos clientes, compreendendo profundamente
+                as suas necessidades e entregando soluções alinhadas com os seus objectivos de negócio.
+              </p>
+            </div>
+
+            <!-- 4 pillars with SVG icons (no emojis — skill rule) -->
+            <div class="grid grid-cols-2 gap-4 mt-10">
+              <div class="flex items-start gap-3">
+                <svg class="text-green mt-0.5 shrink-0" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span class="text-navy text-sm font-bold">Cibersegurança</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="text-green mt-0.5 shrink-0" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+                </svg>
+                <span class="text-navy text-sm font-bold">Automação RPA</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="text-green mt-0.5 shrink-0" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <line x1="12" y1="1" x2="12" y2="23"/>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <span class="text-navy text-sm font-bold">Consultoria Financeira</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="text-green mt-0.5 shrink-0" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                <span class="text-navy text-sm font-bold">Desenvolvimento Digital</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVIÇOS ──────────────────────────────────────────── -->
+    <section id="servicos" class="py-24 bg-slate-50" aria-labelledby="servicos-h2">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-16">
+          <p class="flex items-center gap-3 text-green text-xs font-bold tracking-[0.18em] uppercase mb-4">
+            <span class="rule" aria-hidden="true"></span>
+            Os Nossos Serviços
+          </p>
+          <h2 id="servicos-h2"
+              class="font-heading text-navy font-semibold leading-tight mb-4"
+              style="font-size: clamp(2rem, 3.5vw, 3rem);">
+            Soluções Integradas<br />para o seu Crescimento
+          </h2>
+          <p class="text-muted text-base leading-relaxed max-w-2xl">
+            Portefólio abrangente de serviços tecnológicos e de gestão, personalizados
+            às necessidades específicas da sua organização.
+          </p>
+        </div>
+
+        <!-- Swiss grid: 3-col with hairline dividers -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200" role="list">
+
+          <!-- 1 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Concepção e Desenvolvimento de Websites
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Website completo — design, programação, alojamento e manutenção contínua.
+              Inclui domínio corporativo, e-mail 10 GB e gestão de imagem corporativa.
+            </p>
+          </article>
+
+          <!-- 2 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Desenvolvimento de Aplicações para Telemóveis
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Aplicações Android e iOS com foco em UI/UX, disponibilizadas na AppleStore
+              e PlayStore, integradas com sistemas empresariais.
+            </p>
+          </article>
+
+          <!-- 3 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Automação de Processos (RPA)
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Soluções UiPath — análise de processos, desenvolvimento de robôs RPA,
+              integração com sistemas existentes e monitorização contínua.
+            </p>
+          </article>
+
+          <!-- 4 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Cybersecurity as a Service (CaaS)
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Segurança da informação, Governance Risk &amp; Compliance, Plano de
+              Continuidade de Negócio e gestão de Privacidade.
+            </p>
+          </article>
+
+          <!-- 5 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/>
+              <line x1="8"  y1="11" x2="14" y2="11"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Testes de Penetração
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Testes à infra-estrutura externa/interna, websites e dispositivos móveis,
+              com relatórios detalhados e planos de remediação efectivos.
+            </p>
+          </article>
+
+          <!-- 6 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+              <path d="M7 8h2v5H7zM11 6h2v7h-2zM15 10h2v3h-2z"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Implementação ERP Primavera
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Instalação, configuração e parametrização do Primavera, assegurando integração
+              dos processos contabilísticos e financeiros da sua organização.
+            </p>
+          </article>
+
+          <!-- 7 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Plano Estratégico de Negócio
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Elaboração de planos estratégicos orientados para crescimento sustentável e
+              competitividade, com objectivos claros e mensuráveis.
+            </p>
+          </article>
+
+          <!-- 8 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Consultoria Financeira
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Acompanhamento em tempo real de custos, proveitos, fluxo de caixa e stock,
+              com analistas especializados em indicadores de desempenho empresarial.
+            </p>
+          </article>
+
+          <!-- 9 -->
+          <article class="svc bg-white p-8 hover:bg-navy t cursor-default group" role="listitem">
+            <svg class="text-green mb-6 t" width="28" height="28" fill="none"
+                 stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            <h3 class="font-heading text-navy t text-xl font-semibold mb-3 leading-snug">
+              Optimização &amp; Padronização de Processos
+            </h3>
+            <p class="text-muted t text-sm leading-relaxed">
+              Monitorização contínua, boas práticas e metodologias claras para aumentar
+              produtividade e garantir excelência operacional sustentável.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PORQUÊ NÓS ────────────────────────────────────────── -->
+    <section id="porque" class="py-24 bg-navy" aria-labelledby="porque-h2">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        <div class="mb-16">
+          <p class="flex items-center gap-3 text-green text-xs font-bold tracking-[0.18em] uppercase mb-4">
+            <span class="block w-8 h-px bg-green" aria-hidden="true"></span>
+            Porquê a Alliance Prime
+          </p>
+          <h2 id="porque-h2"
+              class="font-heading text-white font-semibold leading-tight"
+              style="font-size: clamp(2rem, 3.5vw, 3rem);">
+            O que nos Distingue
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+          <div class="border-t border-green/35 pt-8">
+            <div class="font-heading text-green font-semibold text-5xl mb-5 leading-none" aria-hidden="true">01</div>
+            <h3 class="font-heading text-white text-xl font-semibold mb-3">Abordagem Integrada</h3>
+            <p class="text-white/55 text-sm leading-relaxed">Tecnologia e gestão em sinergia, cobrindo toda a cadeia de valor da sua organização.</p>
+          </div>
+
+          <div class="border-t border-green/35 pt-8">
+            <div class="font-heading text-green font-semibold text-5xl mb-5 leading-none" aria-hidden="true">02</div>
+            <h3 class="font-heading text-white text-xl font-semibold mb-3">Soluções Personalizadas</h3>
+            <p class="text-white/55 text-sm leading-relaxed">Soluções à medida, alinhadas com os objectivos e a realidade específica de cada cliente.</p>
+          </div>
+
+          <div class="border-t border-green/35 pt-8">
+            <div class="font-heading text-green font-semibold text-5xl mb-5 leading-none" aria-hidden="true">03</div>
+            <h3 class="font-heading text-white text-xl font-semibold mb-3">Equipa Especializada</h3>
+            <p class="text-white/55 text-sm leading-relaxed">Profissionais com vasta experiência em tecnologia, cibersegurança, finanças e gestão empresarial.</p>
+          </div>
+
+          <div class="border-t border-green/35 pt-8">
+            <div class="font-heading text-green font-semibold text-5xl mb-5 leading-none" aria-hidden="true">04</div>
+            <h3 class="font-heading text-white text-xl font-semibold mb-3">Resultados Mensuráveis</h3>
+            <p class="text-white/55 text-sm leading-relaxed">Eficiência operacional, redução de custos e crescimento sustentável como métricas de sucesso.</p>
+          </div>
+
+          <div class="border-t border-green/35 pt-8">
+            <div class="font-heading text-green font-semibold text-5xl mb-5 leading-none" aria-hidden="true">05</div>
+            <h3 class="font-heading text-white text-xl font-semibold mb-3">Parceria de Longo Prazo</h3>
+            <p class="text-white/55 text-sm leading-relaxed">Relações duradouras com os clientes, adaptando soluções às novas necessidades ao longo do tempo.</p>
+          </div>
+
+          <div class="border-t border-green/35 pt-8">
+            <div class="font-heading text-green font-semibold text-5xl mb-5 leading-none" aria-hidden="true">06</div>
+            <h3 class="font-heading text-white text-xl font-semibold mb-3">Suporte Contínuo</h3>
+            <p class="text-white/55 text-sm leading-relaxed">Suporte técnico e estratégico contínuo para que os sistemas e processos funcionem de forma óptima.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACTO ──────────────────────────────────────────── -->
+    <section id="contacto" class="py-24 bg-white" aria-labelledby="contacto-h2">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+          <!-- Info: 4 cols -->
+          <div class="lg:col-span-4">
+            <p class="flex items-center gap-3 text-green text-xs font-bold tracking-[0.18em] uppercase mb-4">
+              <span class="rule" aria-hidden="true"></span>
+              Contacte-nos
+            </p>
+            <h2 id="contacto-h2"
+                class="font-heading text-navy font-semibold leading-tight mb-6"
+                style="font-size: clamp(2rem, 3vw, 2.75rem);">
+              Vamos<br />Trabalhar<br />Juntos
+            </h2>
+            <div class="w-10 h-0.5 bg-green mb-8" aria-hidden="true"></div>
+            <p class="text-muted text-sm leading-relaxed mb-10">
+              Estamos prontos para apoiar a sua organização. Entre em contacto e descubra
+              como a Alliance Prime pode transformar o seu negócio.
+            </p>
+
+            <address class="not-italic space-y-7">
+
+              <div class="flex items-start gap-4">
+                <svg class="text-green shrink-0 mt-0.5" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 .99 3.33 2 2 0 0 1 2.98 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.98 5.98l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <div>
+                  <div class="text-xs font-bold tracking-[0.1em] uppercase text-muted mb-1">Telefone</div>
+                  <a href="tel:+244845009342" class="text-navy font-bold text-sm hover:text-green t cursor-pointer block">845 009 342</a>
+                  <a href="tel:+244846747520" class="text-navy font-bold text-sm hover:text-green t cursor-pointer block">846 747 520</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <svg class="text-green shrink-0 mt-0.5" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <div>
+                  <div class="text-xs font-bold tracking-[0.1em] uppercase text-muted mb-1">E-mail</div>
+                  <span class="text-navy font-bold text-sm">info@allianceprimecg.com</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <svg class="text-green shrink-0 mt-0.5" width="18" height="18" fill="none"
+                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <div>
+                  <div class="text-xs font-bold tracking-[0.1em] uppercase text-muted mb-1">Website</div>
+                  <span class="text-navy font-bold text-sm">www.allianceprimecg.com</span>
+                </div>
+              </div>
+
+            </address>
+
+            <div class="mt-10 pt-10 border-t border-gray-100">
+              <img src="Logo/logo Principal .png" alt="Alliance Prime Consulting Group" class="h-14 object-contain" />
+            </div>
+          </div>
+
+          <!-- Form: 7 cols -->
+          <div class="lg:col-span-7 lg:col-start-6">
+            <div class="bg-slate-50 p-10 border border-gray-200">
+              <h3 class="font-heading text-navy text-2xl font-semibold mb-8">Solicitar uma Consulta</h3>
+
+              <!-- Skill: visible labels, not placeholder-only; semantic input types; required indicators -->
+              <form novalidate aria-label="Formulário de pedido de consulta">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label for="nome" class="block text-xs font-bold tracking-[0.08em] uppercase text-navy mb-2">
+                      Nome <span class="text-green" aria-label="campo obrigatório">*</span>
+                    </label>
+                    <input type="text" id="nome" name="nome"
+                           autocomplete="given-name" required
+                           placeholder="O seu nome"
+                           class="w-full px-4 py-3 border border-gray-300 bg-white text-navy text-sm focus:outline-none focus:border-green focus:ring-2 focus:ring-green/20 t" />
+                  </div>
+                  <div>
+                    <label for="empresa" class="block text-xs font-bold tracking-[0.08em] uppercase text-navy mb-2">
+                      Empresa <span class="text-green" aria-label="campo obrigatório">*</span>
+                    </label>
+                    <input type="text" id="empresa" name="empresa"
+                           autocomplete="organization" required
+                           placeholder="Nome da empresa"
+                           class="w-full px-4 py-3 border border-gray-300 bg-white text-navy text-sm focus:outline-none focus:border-green focus:ring-2 focus:ring-green/20 t" />
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <label for="email" class="block text-xs font-bold tracking-[0.08em] uppercase text-navy mb-2">
+                    E-mail <span class="text-green" aria-label="campo obrigatório">*</span>
+                  </label>
+                  <input type="email" id="email" name="email"
+                         autocomplete="email" required
+                         placeholder="email@empresa.com"
+                         class="w-full px-4 py-3 border border-gray-300 bg-white text-navy text-sm focus:outline-none focus:border-green focus:ring-2 focus:ring-green/20 t" />
+                </div>
+
+                <div class="mb-6">
+                  <label for="telefone" class="block text-xs font-bold tracking-[0.08em] uppercase text-navy mb-2">
+                    Telefone
+                  </label>
+                  <input type="tel" id="telefone" name="telefone"
+                         autocomplete="tel"
+                         placeholder="+244 000 000 000"
+                         class="w-full px-4 py-3 border border-gray-300 bg-white text-navy text-sm focus:outline-none focus:border-green focus:ring-2 focus:ring-green/20 t" />
+                </div>
+
+                <div class="mb-6">
+                  <label for="servico" class="block text-xs font-bold tracking-[0.08em] uppercase text-navy mb-2">
+                    Serviço de Interesse
+                  </label>
+                  <select id="servico" name="servico"
+                          class="w-full px-4 py-3 pr-10 border border-gray-300 bg-white text-navy text-sm focus:outline-none focus:border-green focus:ring-2 focus:ring-green/20 t cursor-pointer appearance-none">
+                    <option value="">Seleccione um serviço</option>
+                    <option>Desenvolvimento de Website</option>
+                    <option>Aplicações Móveis</option>
+                    <option>Automação de Processos (RPA)</option>
+                    <option>Cybersecurity as a Service</option>
+                    <option>Testes de Penetração</option>
+                    <option>ERP Primavera</option>
+                    <option>Consultoria Financeira</option>
+                    <option>Plano Estratégico de Negócio</option>
+                    <option>Optimização de Processos</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+
+                <div class="mb-8">
+                  <label for="mensagem" class="block text-xs font-bold tracking-[0.08em] uppercase text-navy mb-2">
+                    Mensagem
+                  </label>
+                  <textarea id="mensagem" name="mensagem" rows="4"
+                            placeholder="Descreva brevemente a sua necessidade..."
+                            class="w-full px-4 py-3 border border-gray-300 bg-white text-navy text-sm focus:outline-none focus:border-green focus:ring-2 focus:ring-green/20 t resize-y"></textarea>
+                  <p class="text-muted text-xs mt-1.5">
+                    <span class="text-green" aria-hidden="true">*</span> Campos obrigatórios
+                  </p>
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-navy hover:bg-green text-white t text-xs font-bold tracking-[0.1em] uppercase py-4 cursor-pointer"
+                        aria-label="Enviar pedido de consulta">
+                  Enviar Mensagem
+                </button>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer class="bg-navy-dk" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 py-16 border-b border-white/10">
+
+        <div>
+          <img src="Logo/logo Branco .png" alt="Alliance Prime Consulting Group" class="h-12 object-contain mb-6" />
+          <p class="text-white/45 text-sm leading-relaxed max-w-xs mb-4">
+            Soluções tecnológicas e consultoria empresarial para organizações que
+            ambicionam crescimento sustentável e excelência operacional.
+          </p>
+          <p class="text-green text-xs font-bold tracking-[0.1em] uppercase">
+            Inovação que impulsiona resultados.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-white text-xs font-bold tracking-[0.12em] uppercase mb-6">Serviços</h4>
+          <ul class="space-y-3" role="list">
+            <li><a href="#servicos" class="text-white/45 hover:text-green t text-sm cursor-pointer">Desenvolvimento Web</a></li>
+            <li><a href="#servicos" class="text-white/45 hover:text-green t text-sm cursor-pointer">Aplicações Móveis</a></li>
+            <li><a href="#servicos" class="text-white/45 hover:text-green t text-sm cursor-pointer">Automação RPA</a></li>
+            <li><a href="#servicos" class="text-white/45 hover:text-green t text-sm cursor-pointer">Cibersegurança</a></li>
+            <li><a href="#servicos" class="text-white/45 hover:text-green t text-sm cursor-pointer">ERP Primavera</a></li>
+            <li><a href="#servicos" class="text-white/45 hover:text-green t text-sm cursor-pointer">Consultoria Financeira</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white text-xs font-bold tracking-[0.12em] uppercase mb-6">Empresa</h4>
+          <ul class="space-y-3 mb-8" role="list">
+            <li><a href="#sobre"    class="text-white/45 hover:text-green t text-sm cursor-pointer">Sobre Nós</a></li>
+            <li><a href="#porque"   class="text-white/45 hover:text-green t text-sm cursor-pointer">Porquê a Alliance Prime</a></li>
+            <li><a href="#contacto" class="text-white/45 hover:text-green t text-sm cursor-pointer">Contacto</a></li>
+          </ul>
+          <h4 class="text-white text-xs font-bold tracking-[0.12em] uppercase mb-4">Contactos</h4>
+          <ul class="space-y-2" role="list">
+            <li><a href="tel:+244845009342" class="text-white/45 hover:text-green t text-sm cursor-pointer">845 009 342</a></li>
+            <li><a href="tel:+244846747520" class="text-white/45 hover:text-green t text-sm cursor-pointer">846 747 520</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center py-6 gap-3">
+        <p class="text-white/25 text-xs">
+          © 2026 <span class="text-green/80">Alliance Prime Consulting Group</span>. Todos os direitos reservados.
+        </p>
+        <p class="text-white/25 text-xs tracking-[0.12em] uppercase">Where Finance meets Technology</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn  = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    // Close mobile menu on link click
+    menu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      })
+    );
+    // Smooth scroll behaviour
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

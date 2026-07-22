@@ -83,20 +83,12 @@
       min-height: 100vh;
       background:
         linear-gradient(135deg, rgba(0,52,78,0.93) 0%, rgba(0,52,78,0.75) 60%, rgba(93,155,66,0.5) 100%),
-        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
+        url('https://images.unsplash.com/photo-1747801593177-0a7bc3c00958?w=1600&q=80') center/cover no-repeat;
       display: flex;
       align-items: center;
       padding: 8rem 2rem 5rem;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 80px;
-      background: linear-gradient(to bottom, transparent, var(--white));
     }
 
     .hero-inner {
@@ -973,7 +965,7 @@
           <div class="contact-icon">✉️</div>
           <div>
             <h4>E-mail</h4>
-            <p>info@allianceprimecg.com</p>
+            <p>comercial@allianceprimemz.com</p>
           </div>
         </div>
 
@@ -981,7 +973,7 @@
           <div class="contact-icon">🌍</div>
           <div>
             <h4>Website</h4>
-            <p>www.allianceprimecg.com</p>
+            <p>www.allianceprimemz.com</p>
           </div>
         </div>
 
@@ -990,33 +982,33 @@
         </div>
       </div>
 
-      <div class="contact-form">
+      <form class="contact-form" id="contactForm">
         <h3>Solicitar uma Consulta</h3>
 
         <div class="form-row">
           <div class="form-group">
             <label>Nome</label>
-            <input type="text" placeholder="O seu nome" />
+            <input type="text" name="nome" placeholder="O seu nome" required />
           </div>
           <div class="form-group">
             <label>Empresa</label>
-            <input type="text" placeholder="Nome da empresa" />
+            <input type="text" name="empresa" placeholder="Nome da empresa" />
           </div>
         </div>
 
         <div class="form-group">
           <label>E-mail</label>
-          <input type="email" placeholder="email@empresa.com" />
+          <input type="email" name="email" placeholder="email@empresa.com" required />
         </div>
 
         <div class="form-group">
           <label>Telefone</label>
-          <input type="tel" placeholder="+244 000 000 000" />
+          <input type="tel" name="telefone" placeholder="+244 000 000 000" />
         </div>
 
         <div class="form-group">
           <label>Serviço de Interesse</label>
-          <select>
+          <select name="servico">
             <option value="">Seleccione um serviço</option>
             <option>Desenvolvimento de Website</option>
             <option>Aplicações Móveis</option>
@@ -1033,11 +1025,11 @@
 
         <div class="form-group">
           <label>Mensagem</label>
-          <textarea placeholder="Descreva brevemente a sua necessidade..."></textarea>
+          <textarea name="mensagem" placeholder="Descreva brevemente a sua necessidade..." required></textarea>
         </div>
 
-        <button class="form-submit">Enviar Mensagem</button>
-      </div>
+        <button type="submit" class="form-submit">Enviar Mensagem</button>
+      </form>
 
     </div>
   </div>
@@ -1088,6 +1080,33 @@
     </div>
   </div>
 </footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const nome = form.nome.value.trim();
+    const empresa = form.empresa.value.trim();
+    const email = form.email.value.trim();
+    const telefone = form.telefone.value.trim();
+    const servico = form.servico.value;
+    const mensagem = form.mensagem.value.trim();
+
+    const subject = `Solicitação de Consulta - ${nome}`;
+    const body =
+      `Nome: ${nome}\n` +
+      `Empresa: ${empresa || '-'}\n` +
+      `E-mail: ${email}\n` +
+      `Telefone: ${telefone || '-'}\n` +
+      `Serviço de Interesse: ${servico || '-'}\n\n` +
+      `Mensagem:\n${mensagem}`;
+
+    const mailtoLink =
+      `mailto:comercial@allianceprimemz.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  });
+</script>
 
 </body>
 </html>
